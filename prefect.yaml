@@ -1,0 +1,45 @@
+---
+# Welcome to your prefect.yaml file! You can use this file for
+# storing and managing configuration for deploying your flows.
+# We recommend committing this file to source control along
+# with your flow code.
+
+# Generic metadata about this project
+name: E-commerce Data Engineering Pipeline
+prefect-version: 3.6.20
+
+# build section allows you to manage and build docker images
+build: null
+
+# push section allows you to manage if and how this project
+# is uploaded to remote locations
+push: null
+
+# pull section allows you to provide instructions for cloning
+# this project in remote locations
+pull:
+  - prefect.deployments.steps.set_working_directory:
+      directory:
+        C:\Users\diseg\Downloads\Data Engineering projects\E-commerce Data
+        Engineering Pipeline
+
+# the deployments section allows you to provide configuration
+# for deploying flows
+deployments:
+  - name: Noah-project-deployment
+    version: null
+    tags:
+      - "tasks"
+      - "hands-on-practice"
+      - "prefect-data-engineering"
+    description: "Deploying of a data engineering pipeline for an e-commerce using Prefect."
+    schedule:
+      interval: 120 # Schedule the deployment to run every 120 seconds
+    flow_name: ecommerce-etl-pipeline
+    entrypoint: data-pipeline\src\orchestration\prefect_flows.py:process_ecommerce_data
+    parameters:
+      name: "Project for hands-on practice of data engineering with Prefect."
+    work_pool:
+      name: project-pool
+      work_queue_name: null
+      job_variables: {}
