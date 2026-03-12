@@ -111,29 +111,50 @@ This pipeline simulates how modern companies process **e-commerce data** to gene
 # 📂 Project Structure
 
 ```
-E-commerce-Data-Engineering-Pipeline
+E-commerce data pipeline Project
 │
-├── data/
-│   ├── raw/
-│   └── processed/
+├── 📄 .env
+│   └── AWS credentials (not committed to GitHub)
 │
-├── data-pipeline/
-│   ├── src/
-│   │   ├── data_ingestion/
-│   │   ├── data_processing/
-│   │   └── orchestration/
+├── 📊 data
+│   ├── raw
+│   │   ├── customers.csv        # Customer data
+│   │   ├── products.csv         # Product catalog
+│   │   ├── orders.csv           # Order transactions
+│   │   ├── order_items.csv      # Order line items
+│   │   └── reviews.csv          # Customer reviews
+│
+├── 🔧 data-pipeline
 │   │
-│   ├── config/
-│   ├── infrastructure/
-│   └── tests/
+│   ├── 📄 requirements.txt      # Python dependencies
+│   ├── 🐳 docker-compose.yml    # Container orchestration
+│   │
+│   ├── 📂 src
+│   │   │
+│   │   ├── data_ingestion
+│   │   │   └── s3_uploader.py   # Upload data to AWS S3
+│   │   │
+│   │   ├── data_processing
+│   │   │   └── etl_processor.py # Clean & transform data
+│   │   │
+│   │   └── orchestration
+│   │       └── prefect_flows.py # Prefect pipeline orchestration
+│   │
+│   ├── 📂 config
+│   │   ├── aws_config.yaml      # AWS settings
+│   │   ├── prefect_config.yaml  # Prefect configuration
+│   │   └── data_schemas.yaml    # Data validation rules
+│   │
+│   ├── 📂 infrastructure
+│   │   └── docker
+│   │       └── Dockerfile       # Container build instructions
+│   │
+│   └── 📂 tests
+│       └── test_aws_connection.py # AWS connectivity test
 │
-├── screenshots/
-├── requirements.txt
-├── docker-compose.yml
-└── README.md
+└── 📚 CONTAINERIZATION_GUIDE.md
+    └── Complete Docker setup guide
 ```
-
----
 
 # ⚙️ Pipeline Workflow
 
